@@ -118,9 +118,13 @@ input {
 	aspect-ratio: 1 / 1;
 	background: url("assets/images/charmander_transparent.png");
 	background-size: cover;
-	transition: transform linear 0.05s;
+	transition: transform ease-in-out 0.05s;
 }
 
 #poke:hover {
-	transform: scale(0.93) !important;
+	transform: scale(0.85) !important;
+}
+
+#poke:active {
+	transform: scale(0.95) !important;
 }
