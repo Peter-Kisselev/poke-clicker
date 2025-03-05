@@ -3,9 +3,43 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<title>Poke-clicker</title>
 </head>
 <body>
-	
+	<div id="content">
+		<div id="credit">
+			<div>Developed by Taran, Petr, Kent</div>
+		</div>
+		<div id="main">
+			<div id="clickArea">
+				<div id="poke" onclick="pokeClick()"></div>
+			</div>
+			<div id="sideArea">
+				<div id="score">Your Score: <span id="scoreVal">0</span> </div>
+			</div>
+		</div>
+		<div id="initPopup">
+			<div id="initPopupIn">
+				<h2 id="promptTitle">Choose Your Starting Pokemon!</h2>
+				<div class="pokemonOpts">
+					<img id="pikachuChoice" class="initOp" src="assets/images/pikachu_transparent.png" alt="Pikachu" onclick="selectPokemon('Pikachu')">
+					<img id="charmanderChoice" class="initOp" src="assets/images/charmander_transparent.png" alt="Charmander" onclick="selectPokemon('Charmander')"">
+					<img id="bulbasaurChoice" class="initOp" src="assets/images/bulbasaur_transparent.png" alt="Bulbasaur" onclick ="selectPokemon('Bulbasaur')">
+					<div id="trick" onclick="recieved()"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class = "stats">
+			<h3> Stats </h3>
+			<p>Clicking Power: <span id="clickPower">1</span> </p>
+			<p> Wild Pokemon Spawn Rate: <span id=" "spawnRate"> 0% </span> </p>
+			<p> Alltime Clicks: <span id="alltimeClicks"> 0 </span> </p>
+		</div>
+	</div>
 </body>
+<script src="main.js"></script>
+
+<script 
 </html>
