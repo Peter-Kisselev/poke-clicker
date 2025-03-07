@@ -19,6 +19,8 @@ let addPriceScale;
 let multPriceScale;
 let autoPriceScale;
 
+let autoWait = 100;
+
 
 const selectPokemon = (choice) => {
     const selectedPokemon = choice;
@@ -147,8 +149,6 @@ const addClicker = (ev) => {
 		document.getElementById("addClicker").textContent = autoclickers;
 		document.getElementById("autoclickers").textContent = autoclickers;
 
-		addAutoclicker();
-
 		updatePower();
 		updatePrice();
 	}
@@ -157,8 +157,10 @@ const addClicker = (ev) => {
 	}
 }
 
-const addAutoclicker = () => {
-
+const doAutoclick = () => {
+	for(let i = 0; i < autoclickers; i++) {
+		pokeClick();
+	}
 }
 
 let recieved = function () { };
@@ -187,11 +189,15 @@ document.body.onload = async () => {
 
 	addPrice = 5;
 	multPrice = 1000;
-	autoPrice = 10000;
+	autoPrice = 10;
 
 	addPriceScale = 10;
 	multPriceScale = 1000;
 	autoPriceScale = 10000;
 
 	updatePrice();
+
+	autoWait = 100;
+
+	let clickerInverval = window.setInterval(doAutoclick, autoWait);
 }
