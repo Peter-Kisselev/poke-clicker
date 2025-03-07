@@ -9,14 +9,50 @@
 <body>
 	<div id="content">
 		<div id="credit">
-			<div>Developed by Taran, Petr, Kent</div>
+			<div>Developed by Taran, Petr, Kent <span id="easterEgg">So why are you playing this game?</span></div>
 		</div>
 		<div id="main">
 			<div id="clickArea">
 				<div id="poke" onclick="pokeClick()"></div>
 			</div>
 			<div id="sideArea">
-				<div id="score">Your Score: <span id="scoreVal">0</span> </div>
+				<div id="score">
+					Score: <span id="scoreVal">0</span>
+				</div>
+				<div id="sideTopBar">
+					<div id="statsLink" class="paneLink selected">
+						<p class="linkText">Stats</p>
+					</div>
+					<div id="upgradeLink" class="paneLink">
+						<p class="linkText">Upgrades</p>
+					</div>
+				</div>
+				<div id="statsPane" class="sidePane">
+					<div class="stats">
+						<p>Clicking Power: <span id="clickPower">1</span></p>
+						<p>Raw Clicking Power: <span id="clickPowerRaw">1</span></p>
+						<p>Multipler: <span id="multiplerVal">1</span></p>
+						<p>Autoclickers: <span id="autoclickers"> 0 </span> </p>
+						<p>Lifetime Score: <span id="alltimeClicks"> 0 </span></p>
+					</div>
+				</div>
+				<div id="upgradePane" class="sidePane">
+					<div id="incrementPower" class="upG greyedOut" onclick="addPower()">
+						(<span id="addInc">0</span>)
+						Increase clicking power |
+						Price:&nbsp;<span id="addPrice">100</span>
+					</div>
+					<div id="multiplyPower" class="upG greyedOut" onclick="multPower()">
+						(<span id="multInc">0</span>)
+						Multiply Clicking Power |
+						Price:&nbsp;<span id="multPrice">1000</span>
+					</div>
+					<div id="autoclicker" class="upG greyedOut" onclick="addAutoclick()">
+						(<span id="addClicker">0</span>)
+						Autoclicker (Add 1 CPS) |
+						&nbsp;Price:&nbsp;<span id="autoPrice">1000000</span>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="initPopup">
@@ -30,16 +66,27 @@
 				</div>
 			</div>
 		</div>
-
-		<div class = "stats">
-			<h3> Stats </h3>
-			<p>Clicking Power: <span id="clickPower">1</span> </p>
-			<p> Wild Pokemon Spawn Rate: <span id=" "spawnRate"> 0% </span> </p>
-			<p> Alltime Clicks: <span id="alltimeClicks"> 0 </span> </p>
-		</div>
 	</div>
 </body>
 <script src="main.js"></script>
+<script>
+	const clickStats = document.getElementById("statsLink");
+	const clickUpgrade = document.getElementById("upgradeLink");
+	const statsPane = document.getElementById("statsPane");
+	const upgradePane = document.getElementById("upgradePane");
 
-<script 
+	clickStats.addEventListener("click", (ev) => {
+		statsPane.style.display = "block";
+		upgradePane.style.display = "none";
+
+		clickUpgrade.classList.remove("selected");
+		clickStats.classList.add("selected");
+	});
+	clickUpgrade.addEventListener("click", (ev) => {
+		statsPane.style.display = "none";
+		upgradePane.style.display = "block";
+		clickUpgrade.classList.add("selected");
+		clickStats.classList.remove("selected");
+	});
+</script>
 </html>
