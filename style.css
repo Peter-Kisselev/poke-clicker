@@ -14,6 +14,27 @@ button {
 	font-family: unset;
 }
 
+@keyframes shake {
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(20deg); }
+	50% { transform: rotate(0deg); }
+	75% { transform: rotate(-20deg); }
+	100% { transform: rotate(0deg); }
+}
+
+.rotate {
+	animation: shake 0.3s;
+}
+
+#initPopupIn .pokeball {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	width: 30px;
+	cursor: pointer;
+}
+
+
 input {
 	font-size: unset;
 	font-family: unset;
@@ -41,6 +62,10 @@ input {
 
 .initOp {
 	width: 100px;
+}
+
+.pokeball {
+	width: 20px;
 }
 
 #initPopup {
@@ -105,7 +130,6 @@ input {
 
 .initOp:hover {
     transform: scale(1.1);
-
 }
 
 .upgrades {
@@ -137,7 +161,8 @@ input {
 	aspect-ratio: 1 / 1;
 	background: url("assets/images/charmander_transparent.png");
 	background-size: cover;
-	transition: transform ease-in-out 0.05s;
+	/* transition: transform ease-in-out 0.05s; */
+	transition: transform 0.1s cubic-bezier(0.5, -0.91, 0.58, 2.26);
 }
 
 #poke:hover {
@@ -145,6 +170,7 @@ input {
 }
 
 #poke:active {
+	transition: transform 0.05s cubic-bezier(0.5, -0.91, 0.58, 2.26) !important;
 	transform: scale(0.95) !important;
 }
 

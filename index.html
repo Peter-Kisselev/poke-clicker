@@ -4,15 +4,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="confetti.css">
 	<title>Poke-clicker</title>
 </head>
 <body>
 	<div id="content">
 		<div id="credit">
-			<div>Developed by Taran, Petr, Kent <span id="easterEgg">So why are you playing this game?</span></div>
+			<div>Developed by Taran, Petr, & Kent</div>
 		</div>
 		<div id="main">
 			<div id="clickArea">
+				<div id="confettiSpawner"></div>
 				<div id="poke" onclick="pokeClick()"></div>
 			</div>
 			<div id="sideArea">
@@ -31,7 +33,7 @@
 					<div class="stats">
 						<p>Clicking Power: <span id="clickPower">1</span></p>
 						<p>Raw Clicking Power: <span id="clickPowerRaw">1</span></p>
-						<p>Multipler: <span id="multiplerVal">1</span></p>
+						<p>Multipler: <span id="multiplierVal">1</span></p>
 						<p>Autoclickers: <span id="autoclickers"> 0 </span> </p>
 						<p>Lifetime Score: <span id="alltimeClicks"> 0 </span></p>
 					</div>
@@ -62,6 +64,7 @@
 					<img id="pikachuChoice" class="initOp" src="assets/images/pikachu_transparent.png" alt="Pikachu" onclick="selectPokemon('Pikachu')">
 					<img id="charmanderChoice" class="initOp" src="assets/images/charmander_transparent.png" alt="Charmander" onclick="selectPokemon('Charmander')"">
 					<img id="bulbasaurChoice" class="initOp" src="assets/images/bulbasaur_transparent.png" alt="Bulbasaur" onclick ="selectPokemon('Bulbasaur')">
+					<img id="easterEggChoice" class="pokeball" src="assets/images/pokeball.png" alt="Pokeball" onclick ="easterEggEvent()">
 					<div id="trick" onclick="recieved()"></div>
 				</div>
 			</div>
@@ -69,6 +72,7 @@
 	</div>
 </body>
 <script src="main.js"></script>
+<script src="confetti.js"></script>
 <script>
 	const clickStats = document.getElementById("statsLink");
 	const clickUpgrade = document.getElementById("upgradeLink");

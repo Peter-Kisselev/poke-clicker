@@ -20,6 +20,7 @@ let multPriceScale;
 let autoPriceScale;
 
 let autoWait = 100;
+let pokeballClickCount = 0;
 
 
 const selectPokemon = (choice) => {
@@ -42,6 +43,23 @@ const selectPokemon = (choice) => {
 
 	document.getElementById('trick').click();
 }
+const easterEggEvent = () => {
+	const pokeball = document.getElementById('pokeball.png')
+	pokeball.classList.add("rotate");
+	setTimeout(() => {
+		pokeball.classList.remove("rotate");
+	}, 250)
+
+	pokeballClickCount++;
+
+	if (pokeballClickCount>=30) {
+		pokeball.src = "assets/images/mystery_pokemon.png"
+		console.log("Easter Egg: Mystery Pokemon Unlocked!")
+	}
+}
+
+
+
 
 const addScore = () => {
 	score += clickPower //Placeholder
@@ -116,6 +134,7 @@ const addPower = (ev) => {
 		document.getElementById("clickPowerRaw").textContent = clickPowerRaw;
 		updatePower();
 		updatePrice();
+		updateAllowed();
 	}
 	else{
 		console.log("insufficient funds");
@@ -126,7 +145,7 @@ const multPower = (ev) => {
 	if (score >= multPrice){
 		score -= multPrice;
 		updateScore();
-		multPrice += multPriceScale;
+		multPrice = Math.round(multPrice*multPriceScale);
 		powerMultipliedBought += 1;
 		document.getElementById("multInc").textContent = powerMultipliedBought;
 		multiplier = Math.pow(2, powerMultipliedBought);
@@ -134,6 +153,7 @@ const multPower = (ev) => {
 		document.getElementById("multiplierVal").textContent = multiplier;
 		updatePower();
 		updatePrice();
+		updateAllowed();
 	}
 	else{
 		console.log("insufficient funds");
@@ -144,13 +164,14 @@ const addClicker = (ev) => {
 	if (score >= autoPrice){
 		score -= autoPrice;
 		updateScore();
-		autoPrice += autoPriceScale;
+		autoPrice += Math.round(Math.pow(autoPrice, autoPriceScale));
 		autoclickers += 1;
 		document.getElementById("addClicker").textContent = autoclickers;
 		document.getElementById("autoclickers").textContent = autoclickers;
 
 		updatePower();
 		updatePrice();
+		updateAllowed();
 	}
 	else{
 		console.log("insufficient funds");
@@ -187,13 +208,13 @@ document.body.onload = async () => {
 	powerMultipliedBought = 0;
 	autoclickers = 0;
 
-	addPrice = 5;
-	multPrice = 1000;
-	autoPrice = 10;
+	addPrice = 50;
+	multPrice = 300;
+	autoPrice = 5000;
 
-	addPriceScale = 10;
-	multPriceScale = 1000;
-	autoPriceScale = 10000;
+	addPriceScale = 50;
+	multPriceScale = 2;
+	autoPriceScale = 1.1;
 
 	updatePrice();
 
