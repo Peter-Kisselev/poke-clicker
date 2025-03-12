@@ -30,12 +30,20 @@ const selectPokemon = (choice) => {
 	popup.style.display = "none";
 
 	const finalImg = document.getElementById("poke");
+	const nameText = document.getElementById("name");
+
 	if(selectedPokemon === "Pikachu") {
 		finalImg.style.background = "url(\"assets/images/pikachu_transparent.png\")";
+		nameText.textContent = "Pikachu";
 	} else if(selectedPokemon === "Charmander") {
 		finalImg.style.background = "url(\"assets/images/charmander_transparent.png\")";
-	} else {
+		nameText.textContent = "Charmander";
+	} else if(selectedPokemon === "Bulbasaur") {
 		finalImg.style.background = "url(\"assets/images/bulbasaur_transparent.png\")";
+		nameText.textContent = "Bulbasaur";
+	} else {
+		finalImg.style.background = "url(\"assets/images/mystery_pokemon.png\")";
+		nameText.textContent = "?????";
 	}
 	finalImg.style.backgroundSize = "contain";
 	finalImg.style.transform = "scale(0.8)";
@@ -43,18 +51,32 @@ const selectPokemon = (choice) => {
 
 	document.getElementById('trick').click();
 }
+
+	const secret = document.getElementById("easterEggChoice");
+	let counter = 0;
+	secret.addEventListener("click", (ev) => {
+		counter += 1;
+		if(counter == 15) {
+			document.getElementById("mewtwoChoice").style.display = "block!important"
+		}
+	});
+
 const easterEggEvent = () => {
-	const pokeball = document.getElementById('pokeball.png')
+	const pokeball = document.getElementById('easterEggChoice')
 	pokeball.classList.add("rotate");
 	setTimeout(() => {
 		pokeball.classList.remove("rotate");
 	}, 250)
 
 	pokeballClickCount++;
+	let threshold = 15;
 
-	if (pokeballClickCount>=30) {
-		pokeball.src = "assets/images/mystery_pokemon.png"
-		console.log("Easter Egg: Mystery Pokemon Unlocked!")
+	if (pokeballClickCount>=threshold) {
+		pokeball.src = "assets/images/question.png";
+		console.log("Easter Egg: Mystery Pokemon Unlocked!");
+	}
+	if(pokeballClickCount>=threshold+1) {
+		selectPokemon("mystery");
 	}
 }
 
